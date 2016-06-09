@@ -2,16 +2,20 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 
 entity Controller is -- MultiCycle Controller
-	port(clk, reset: in STD_logic;
+	port(
+	--clock and reset signals
+	clk, reset: in STD_logic;
+	--Input signals
 	op, funct: in STD_logic_vector (5 downto 0);
 	zero: in STD_logic;
-	IorD, MemWrite, IRWrite, RegWrite: out STd_logic;
-	PCSrc: out STD_logic_vector (1 downto 0);
-	ALUControl: out STD_logic_vector (2 downto 0);
+	--Register Enable Signals
+	Branch, MemWrite, IRWrite, RegWrite, PCEn: out STd_logic;
+	--MUX Select Signals
+	RegDst, MemtoReg, IorD, ALUSrcA: out STD_logic;
 	ALUSrcB: out STD_logic_vector (1 downto 0);
-	ALUSrcA: out STD_logic;
-	RegDst, MemtoReg: out STD_logic;
-	PCEn: out STD_logic
+	PCSrc: out STD_logic_vector (1 downto 0);	 
+	--ALUControl Output Signal
+	ALUControl: out STD_logic_vector (2 downto 0)
 	);
 end;
 
@@ -27,20 +31,29 @@ component ALUDec
 	);	 
 end component;									
 
-component MainDec
-	port(		
-	op: in STD_Logic_vector (5 downto 0);
-	IorD, MemWrite, IRWrite, RegWrite: out STd_logic;
-	PCSrc: out STD_logic_vector (1 downto 0);
+component MainDec	
+	port(
+	--Clock and Reset Signals
+	clk, reset: in STD_logic;  				
+	--Input OPCODE
+	op: in STD_Logic_vector (5 downto 0);	
+	--Register Enable Signals
+	Branch, MemWrite, IRWrite, RegWrite, PCWrite: out STD_logic;
+	--MUX Select Signals
+	RegDst, MemtoReg, IorD,ALUSrcA: out STD_Logic;
 	ALUSrcB: out STD_logic_vector (1 downto 0);
-	ALUSrcA: out STD_logic;
-	RegDst, MemtoReg: out STD_logic
-	);				   
+	PCSrc: out STD_logic_vector (1 downto 0);
+	--ALUDEC Output
+	ALUOp: out STD_logic_vector (1 downto 0);
+	);					   
 end component;
 
 begin
 	PCEn <= (Branch AND zero) OR PCWrite;
 	
-	md: MainDec port map (op, IorD, MemWrite, IRWrite, RegWrite, PCSrc, ALUSrcB, ALUSrcA, RegDst, MemtoReg);
+	md: MainDec port map (clk, reset,op,
+						Branch, MemWrite, IRWrite, RegWrite, PCWrite,
+						RegDst, MemtoReg, IorD, ALUSrcA, ALUSrcB, PCSrc,
+						ALUOp);
 	ad: ALUDec port map (funct, ALUOp, ALUControl);
 end;

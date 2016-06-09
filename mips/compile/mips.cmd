@@ -1,1 +1,1 @@
--w -s "C:\My_Designs\MultiCycle\library.cfg"  -j "C:\My_Designs\MultiCycle\mips\projlib.cfg"  -d "C:\My_Designs\MultiCycle\mips\compile"   -work mips  -O3 -e 100 -2002 "C:\My_Designs\MultiCycle\mips\src\Controller.vhd"
+-w -s "C:\My_Designs\MultiCycle\library.cfg"  -j "C:\My_Designs\MultiCycle\mips\projlib.cfg"  -d "C:\My_Designs\MultiCycle\mips\compile"   -work mips  -O3 -e 100 -2002 "C:\My_Designs\MultiCycle\mips\src\Controller.vhd" "C:\My_Designs\MultiCycle\mips\src\MainDec.vhd"

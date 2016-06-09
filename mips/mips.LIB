@@ -1,25 +1,35 @@
-timestamp=1465480143941
+timestamp=1465507956892
 
 [controller]
-A/struct=21|./src/Controller.vhd|18|1*0
+A/struct=21|./src/Controller.vhd|18|1*65647
 BinI32/struct=3*0
 I=0*1128
-I/struct=0*2112
+I/struct=0*7174
 M=11|0|v98|1465480025461|./src/Controller.vhd|0*544*0x94ec9a6a4c3fea4cb51cd0198cb615f54187c065|0*1047*0xab32bc1a2daf049573e14469f634e0e6
-M/struct=21|0|v98|1465480143428|./src/Controller.vhd|0*1232*0xdc2f8b942be98b6bca8ed925b8f04e0152b5202d|0*2021*0xb33770ff1c10522f9491560174ac8e6c
+M/struct=21|0|v98|1465507956311|./src/Controller.vhd|0*6171*0xf80f5f1b249f2902d922392d8069f73b3ce073b2|0*7083*0xb33770ff1c10522f9491560174ac8e6c
 R=./src/Controller.vhd|4
 Version=9.1.2354.4209  (Windows)|00000003789cd3f5370600015b00b0
 Version/struct=9.1.2354.4209  (Windows)|00000003789cd3f5370600015b00b0
 
+[maindec]
+A/maindec=+21|./src/MainDec.vhd|16|1*56994
+I=0*8266
+M=11|0|v98|1465483685934|./src/MainDec.vhd|0*7718*0x7fb8be6f215f6b3b0487b84c80978bd7b1e3a7eb|0*8191*0xab32bc1a2daf049573e14469f634e0e6
+M/maindec=M/MainDec 21|0|v98|1465482409214|./src/MainDec.vhd|0*5841*0x836d9f522a61e0d104fd9023337ccb8a4c028ae9|0*5976*0xb33770ff1c10522f9491560174ac8e6c
+R=./src/MainDec.vhd|4
+Version=9.1.2354.4209  (Windows)|00000003789cd3f5370600015b00b0
+Version/maindec=9.1.2354.4209  (Windows)|00000003789cd3f5370600015b00b0
+
 [~A]
-ModifyID=5
+ModifyID=85
 Version=73
 
 [~MFT]
-0=6|0mips.mgf|2112|0
-1=0|1mips.mgf|0|0
+0=54|0mips.mgf|8266|4718
+1=31|1mips.mgf|65647|63686
 3=0|3mips.mgf|0|0
 
 [~U]
 controller=Controller 11|0*0|
+maindec=MainDec 11|0*7240|
 

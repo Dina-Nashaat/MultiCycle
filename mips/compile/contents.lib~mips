@@ -1,3 +1,5 @@
-5
+85
 ~E 1 "./src/Controller.vhd" 4 Controller
 ~A 1 "./src/Controller.vhd" 18 struct
+~E 1 "./src/MainDec.vhd" 4 MainDec
+~A 1 "./src/MainDec.vhd" 16 maindec

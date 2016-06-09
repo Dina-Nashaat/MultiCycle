@@ -38,6 +38,8 @@ Active_lib=
 
 [Files]
 /Controller.vhd=-1
+/MainDec.vhd=-1
 
 [Files.Data]
 .\src\Controller.vhd=VHDL Source Code
+.\src\MainDec.vhd=VHDL Source Code

@@ -1,4 +1,4 @@
-Active-HDL 9.1.2354.4209  2013-01-08 15:49:20
+Active-HDL 9.1.2354.4209  2013-01-08 20:33:05
 
 Elaboration top modules:
 Architecture                  struct(Controller)
@@ -8,6 +8,7 @@ Architecture                  struct(Controller)
 Entity     | Architecture | Library | Info | Compiler Version         | Compilation Options
 --------------------------------------------------------------------------------------------
 Controller | struct       | mips    |      | 9.1.2354.4209  (Windows) | -O3
+MainDec    | maindec      | mips    |      | 9.1.2354.4209  (Windows) | -O3
 --------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------------------

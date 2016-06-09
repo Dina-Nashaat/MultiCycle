@@ -4,9 +4,9 @@ mips/elaboration.log
 mips/mips.LIB
 mips/compile
 mips/log
-mips/mips.adf
 mips/mips.wsp
 mips/stimulators.set
 MultiCycle.wsw
 mips/mips.wsp
 mips/compilation.order
+mips/compile.cfg

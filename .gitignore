@@ -9,3 +9,4 @@ mips/mips.wsp
 mips/stimulators.set
 MultiCycle.wsw
 mips/mips.wsp
+mips/compilation.order

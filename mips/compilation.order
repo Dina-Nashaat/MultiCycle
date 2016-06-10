@@ -1,3 +1,2 @@
-.\src\MainDec.vhd
-.\src\Controller.vhd
-.\src\aludec.vhd
+.\src\C_TopFrame.vhd
+.\src\Controller_TB.vhd

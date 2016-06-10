@@ -14,3 +14,4 @@ mips/mips.adf
 mips/compilation.order
 mips/src/wave.asdbw
 mips/src/wave.asdb
+mips/mips.LIB

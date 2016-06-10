@@ -112,6 +112,4 @@ ALUSrcB 	<= controlSignals(6 downto 5);
 PCSrc 		<= controlSignals(4 downto 3);
 ALUOp 		<= controlSignals(2 downto 1);
 PCWrite 	<= controlSignals(0);
-
-
 end;

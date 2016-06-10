@@ -45,8 +45,10 @@ Selected=
 [Files]
 /MainDec.vhd=-1
 /Controller.vhd=-1
+/aludec.vhd=-1
 
 [Files.Data]
 .\src\MainDec.vhd=VHDL Source Code
 .\src\Controller.vhd=VHDL Source Code
+.\src\aludec.vhd=VHDL Source Code
 

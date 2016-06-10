@@ -1,37 +1,49 @@
-timestamp=1465522599725
+timestamp=1465569789193
+
+[aludec]
+A/behave=21|./src/aludec.vhd|13|1*321381
+BinI32/behave=3*35198
+I=0*10682
+I/behave=0*12214
+M=11|0|v98|1465569684183|./src/aludec.vhd|0*10339*0x274b9b059a82fb82c59503674e6712dfdab93280|0*10609*0xab32bc1a2daf049573e14469f634e0e6
+M/behave=21|0|v98|1465569789132|./src/aludec.vhd|0*11661*0xbc2faa308c887a0c76e9731ea81fffa2f836b7fa|0*12131*0xb33770ff1c10522f9491560174ac8e6c
+R=./src/aludec.vhd|4
+Version=9.1.2354.4209  (Windows)|00000003789cd3f5370600015b00b0
+Version/behave=9.1.2354.4209  (Windows)|00000003789cd3f5370600015b00b0
 
 [controller]
-A/struct=21|./src/Controller.vhd|22|1*159755
-BinI32/struct=3*8794
+A/struct=21|./src/Controller.vhd|22|1*314998
+BinI32/struct=3*34802
 I=0*1100
-I/struct=0*2201
+I/struct=0*10782
 M=11|0|v98|1465521088721|./src/Controller.vhd|0*544*0xb63cfb62c378512d1d85143fb5e62b8b564b485c|0*1019*0xab32bc1a2daf049573e14469f634e0e6
-M/struct=21|0|v98|1465522599611|./src/Controller.vhd|0*1204*0x72ac54d4b6aa15f3784e30fcd54f9cb2fa64e1f8|0*2110*0xb33770ff1c10522f9491560174ac8e6c
+M/struct=21|0|v98|1465569789073|./src/Controller.vhd|0*1204*0x72ac54d4b6aa15f3784e30fcd54f9cb2fa64e1f8|0*2110*0xb33770ff1c10522f9491560174ac8e6c
 R=./src/Controller.vhd|4
 Version=9.1.2354.4209  (Windows)|00000003789cd3f5370600015b00b0
 Version/struct=9.1.2354.4209  (Windows)|00000003789cd3f5370600015b00b0
 
 [maindec]
-A/rtl=A/RTL 21|./src/MainDec.vhd|21|1*154379
-BinI32/rtl=3*7241
+A/rtl=A/RTL 21|./src/MainDec.vhd|21|1*309622
+BinI32/rtl=3*33249
 I=0*3296
-I/rtl=I/RTL 0*8146
+I/rtl=I/RTL 0*10030
 M=11|0|v98|1465521096635|./src/MainDec.vhd|0*2769*0x30992673f5ab268dea1a902ac00bcfeda8dbc075|0*3221*0xab32bc1a2daf049573e14469f634e0e6
-M/rtl=M/RTL 21|0|v98|1465522599501|./src/MainDec.vhd|0*6367*0x04b96fa88a5210492e5deddf390a2e72bf098624|0*8064*0xb33770ff1c10522f9491560174ac8e6c
+M/rtl=M/RTL 21|0|v98|1465569789008|./src/MainDec.vhd|0*8251*0xff0d4f0172d00dde6fac4b64040b7c05a6a374c0|0*9948*0xb33770ff1c10522f9491560174ac8e6c
 R=./src/MainDec.vhd|4
 Version=9.1.2354.4209  (Windows)|00000003789cd3f5370600015b00b0
 Version/rtl=9.1.2354.4209  (Windows)|00000003789cd3f5370600015b00b0
 
 [~A]
-ModifyID=167
+ModifyID=334
 Version=73
 
 [~MFT]
-0=25|0mips.mgf|8146|2970
-1=53|1mips.mgf|159755|154379
-3=25|3mips.mgf|8794|7241
+0=46|0mips.mgf|12214|5580
+1=108|1mips.mgf|321381|309622
+3=80|3mips.mgf|35198|33249
 
 [~U]
+aludec=11|0*10135|
 controller=Controller 11|0*0|
 maindec=MainDec 11|0*2267|
 

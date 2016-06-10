@@ -9,7 +9,7 @@ entity Controller is -- MultiCycle Controller
 	op, funct: in STD_logic_vector (5 downto 0);
 	zero: in STD_logic;
 	--Register Enable Signals
-	Branch, MemWrite, IRWrite, RegWrite, PCEn: out STd_logic;
+	MemWrite, IRWrite, RegWrite, PCEn: out STd_logic;
 	--MUX Select Signals
 	RegDst, MemtoReg, IorD, ALUSrcA: out STD_logic;
 	ALUSrcB: out STD_logic_vector (1 downto 0);
@@ -20,6 +20,7 @@ entity Controller is -- MultiCycle Controller
 end;
 
 architecture struct of Controller is
+
 signal ALUOp: STD_logic_vector (1 downto 0);
 signal PCWrite, Branch: STD_logic;
 
@@ -44,7 +45,7 @@ component MainDec
 	ALUSrcB: out STD_logic_vector (1 downto 0);
 	PCSrc: out STD_logic_vector (1 downto 0);
 	--ALUDEC Output
-	ALUOp: out STD_logic_vector (1 downto 0);
+	ALUOp: out STD_logic_vector (1 downto 0)
 	);					   
 end component;
 

@@ -100,4 +100,18 @@ begin
 		end if;
 end process;	
 
+Branch  	<= controlSignals(14);
+MemWrite 	<= controlSignals(13); 
+IRWrite 	<= controlSignals(12);
+RegWrite 	<= controlSignals(11);
+RegDst 		<= controlSignals(10);
+MemtoReg	<= controlSignals(9);
+IorD 		<= controlSignals(8);
+ALUSrcA 	<= controlSignals(7);
+ALUSrcB 	<= controlSignals(6 downto 5);
+PCSrc 		<= controlSignals(4 downto 3);
+ALUOp 		<= controlSignals(2 downto 1);
+PCWrite 	<= controlSignals(0);
+
+
 end;

@@ -1,4 +1,4 @@
-timestamp=1465569789193
+timestamp=1465602079487
 
 [aludec]
 A/behave=21|./src/aludec.vhd|13|1*321381
@@ -11,6 +11,16 @@ R=./src/aludec.vhd|4
 Version=9.1.2354.4209  (Windows)|00000003789cd3f5370600015b00b0
 Version/behave=9.1.2354.4209  (Windows)|00000003789cd3f5370600015b00b0
 
+[c_topframe]
+A/test=A/Test 21|./src/C_TopFrame.vhd|21|1*127556
+I=0*6186
+I/test=I/Test 0*7097
+M=11|0|v98|1465600651246|./src/C_TopFrame.vhd|0*5612*0xb1bb56ca54ba19252f2ff4dfbb992e6f3e56786f|0*6105*0xab32bc1a2daf049573e14469f634e0e6
+M/test=M/Test 21|0|v98|1465602078293|./src/C_TopFrame.vhd|0*6359*0x5a5f727e8ac5232b01f6cc7a1844de0e5e0fabd4|0*7008*0xb33770ff1c10522f9491560174ac8e6c
+R=./src/C_TopFrame.vhd|5
+Version=9.1.2354.4209  (Windows)|00000003789cd3f5370600015b00b0
+Version/test=9.1.2354.4209  (Windows)|00000003789cd3f5370600015b00b0
+
 [controller]
 A/struct=21|./src/Controller.vhd|22|1*314998
 BinI32/struct=3*34802
@@ -21,6 +31,17 @@ M/struct=21|0|v98|1465569789073|./src/Controller.vhd|0*1204*0x72ac54d4b6aa15f378
 R=./src/Controller.vhd|4
 Version=9.1.2354.4209  (Windows)|00000003789cd3f5370600015b00b0
 Version/struct=9.1.2354.4209  (Windows)|00000003789cd3f5370600015b00b0
+
+[controller_tb]
+A/test=A/Test 21|./src/Controller_TB.vhd|8|1*133110
+BinI32/test=3*0
+I=0*365
+I/test=I/Test 0*8297
+M=11|0|v98|1465597545118|./src/Controller_TB.vhd|0*85*0xa8c4fef07a1de214726c9e9ba44c7ab2cc7de27c|0*278*0xab32bc1a2daf049573e14469f634e0e6
+M/test=M/Test 21|0|v98|1465602078299|./src/Controller_TB.vhd|0*7161*0x8ffe3e93acecdb87f3137870ee6b09a4d86f8f52|0*8202*0xb33770ff1c10522f9491560174ac8e6c
+R=./src/Controller_TB.vhd|5
+Version=9.1.2354.4209  (Windows)|00000003789cd3f5370600015b00b0
+Version/test=9.1.2354.4209  (Windows)|00000003789cd3f5370600015b00b0
 
 [maindec]
 A/rtl=A/RTL 21|./src/MainDec.vhd|21|1*309622
@@ -34,16 +55,18 @@ Version=9.1.2354.4209  (Windows)|00000003789cd3f5370600015b00b0
 Version/rtl=9.1.2354.4209  (Windows)|00000003789cd3f5370600015b00b0
 
 [~A]
-ModifyID=334
+ModifyID=479
 Version=73
 
 [~MFT]
-0=46|0mips.mgf|12214|5580
-1=108|1mips.mgf|321381|309622
-3=80|3mips.mgf|35198|33249
+0=94|0mips.mgf|8297|10074
+1=164|1mips.mgf|133110|437178
+3=117|3mips.mgf|0|33249
 
 [~U]
 aludec=11|0*10135|
+c_topframe=C_TopFrame 11|0*5035|
 controller=Controller 11|0*0|
+controller_tb=Controller_TB 11|0*0|
 maindec=MainDec 11|0*2267|
 

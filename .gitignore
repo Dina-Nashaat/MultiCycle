@@ -10,3 +10,7 @@ MultiCycle.wsw
 mips/mips.wsp
 mips/compilation.order
 mips/compile.cfg
+mips/mips.adf
+mips/compilation.order
+mips/src/wave.asdbw
+mips/src/wave.asdb

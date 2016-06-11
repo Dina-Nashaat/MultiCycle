@@ -1,5 +1,2 @@
-i<>.\src\Controller.vhd
-i<>.\src\MainDec.vhd
-i<>.\src\aludec.vhd
 i<>.\src\TestBench.vhd
 i<>.\src\C_TopFrame.vhd

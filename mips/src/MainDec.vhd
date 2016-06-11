@@ -21,45 +21,49 @@ end MainDec;
 architecture RTL of MainDec is
 
 Type stage_type is (fetch, decode, execute, memory, writeBack);
-signal stage: stage_type;
+signal stage, nxt_stage: stage_type;
 signal controlSignals: std_logic_vector (14 downto 0);
 
 begin
 process(reset,clk)
 begin
 	if(reset = '1') then
-		stage <= fetch;
+		nxt_stage <= fetch;	
+		stage <= nxt_stage;
 	elsif rising_edge(clk) then
-		case stage is
+		case nxt_stage is
 			-- Fetch Stage
 			when fetch => 
-			controlSignals <= "001100000100000";
-			stage <= decode;
+			controlSignals <= "101000000010000";
+			stage <= nxt_stage;
+			nxt_stage <= decode;
 			
 			-- Decode Stage
 			when decode=>
-			controlSignals <= "000000001100000";
-			stage <= execute;
+			controlSignals <= "000000000110000";
+			stage <= nxt_stage;
+			nxt_stage <= execute;
 			
 			-- Execute Stage
 			when execute =>
 			case(op)is		  
 				-- Execute Load Word
 				when "100011" =>
-				controlSignals <= "000000011000000";	 
+				controlSignals <= "000010000100000";	 
 				-- Execute R-Type
 				when "000000" =>
-				controlSignals <= "000000010000100";
+				controlSignals <= "000010000000010";
 				-- Execute BEQ
 				when "000100" =>
-				controlSignals <= "100000010001010";
+				controlSignals <= "000011000000101";
 				-- Addi Execute
 				when "001000" =>
-				controlSignals <= "000000011000000";
+				controlSignals <= "000010000100000";
 				when others =>
 				controlSignals <= "000000000000000";
-			end case;
-			stage <= memory;
+			end case;		
+			stage <= nxt_stage;
+			nxt_stage <= memory;
 			
 			-- Memory Stage
 			when memory =>
@@ -73,18 +77,19 @@ begin
 				when others =>
 				controlSignals <= "000000000000000";
 			end case;
-			stage <= writeBack;
+			stage <= nxt_stage;
+			nxt_stage <= writeBack;
 			
 			-- WriteBack Stage
 			when writeBack =>
 			case(op) is		 
 				--Load Word Write Back
 				when "100011" => 
-				controlSignals <= "000101000000000";
+				controlSignals <= "000100010000000";
 				
 				--RType Write Back
 				when "000000" =>
-				controlSignals <= "000110000000000";
+				controlSignals <= "000100001000000";
 				
 				--Addi Write Back
 				when "001000"	=>
@@ -92,7 +97,9 @@ begin
 				when others =>
 				controlSignals <= "000000000000000";
 			end case;		  
-			stage <= fetch;
+			stage <= nxt_stage;
+			nxt_stage <= fetch;
+			
 			when others =>
 				controlSignals <= "000000000000000";
 		end case;
@@ -100,16 +107,16 @@ begin
 		end if;
 end process;	
 
-Branch  	<= controlSignals(14);
-MemWrite 	<= controlSignals(13); 
+PCWrite 	<= controlSignals(14);
+MemWrite 	<= controlSignals(13);
 IRWrite 	<= controlSignals(12);
 RegWrite 	<= controlSignals(11);
-RegDst 		<= controlSignals(10);
-MemtoReg	<= controlSignals(9);
-IorD 		<= controlSignals(8);
-ALUSrcA 	<= controlSignals(7);
-ALUSrcB 	<= controlSignals(6 downto 5);
-PCSrc 		<= controlSignals(4 downto 3);
-ALUOp 		<= controlSignals(2 downto 1);
-PCWrite 	<= controlSignals(0);
+ALUSrcA 	<= controlSignals(10);
+Branch  	<= controlSignals(9);
+IorD 		<= controlSignals(8); 
+MemtoReg	<= controlSignals(7);
+RegDst 		<= controlSignals(6);
+ALUSrcB 	<= controlSignals(5 downto 4);
+PCSrc 		<= controlSignals(3 downto 2);
+ALUOp 		<= controlSignals(1 downto 0);
 end;

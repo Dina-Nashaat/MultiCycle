@@ -3,3 +3,4 @@
 .\src\Controller.vhd
 .\src\C_TopFrame.vhd
 .\src\Controller_TB.vhd
+.\src\Memory.vhd

@@ -38,7 +38,7 @@ Active_lib=
 
 [HierarchyViewer]
 SortInfo=u
-HierarchyInformation=controller_tb|Test|0
+HierarchyInformation=controller_tb|Test|0 memory|behave|0 
 ShowHide=ShowTopLevel
 Selected=
 
@@ -50,6 +50,7 @@ Selected=
 /Controller_TB.vhd=-1
 /LW-Simulation.asdb=-1
 /LW-Simulation.awc=-1
+/Memory.vhd=-1
 
 [Files.Data]
 .\src\MainDec.vhd=VHDL Source Code
@@ -59,4 +60,5 @@ Selected=
 .\src\Controller_TB.vhd=VHDL Source Code
 .\src\LW-Simulation.asdb=Accelerated Waveform File
 .\src\LW-Simulation.awc=Accelerated Waveform Configuration
+.\src\Memory.vhd=VHDL Source Code
 

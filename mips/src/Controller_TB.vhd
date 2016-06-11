@@ -48,4 +48,24 @@ begin
 		wait;
 	end process;
 	
+	--Dummy Processes
+	process begin
+		zero <= '1';
+		wait for 100 ns;
+		zero <= '0';
+		wait for 100 ns;
+	end process;
+	
+	process begin
+		--Load Word Instruction
+		Op <= "100011";
+		wait;
+	end process;
+	
+	process begin
+		--Add Function
+		Funct <= "100000";
+		wait;
+	end process;
+	
 end;	

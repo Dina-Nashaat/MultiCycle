@@ -33,7 +33,7 @@ component RegFile
 end component;
 
 component ALU 
-	Port(
+	port(
 	A: in STD_LOGIC_VECTOR(31 downto 0);	--input A	  
 	B: in STD_LOGIC_VECTOR(31 downto 0);  	--input B
 	C: in STD_LOGIC_VECTOR(2 downto 0);	 --control 

@@ -25,7 +25,7 @@ signal stage, nxt_stage: stage_type;
 signal controlSignals: std_logic_vector (14 downto 0);
 
 begin
-process(reset,clk)
+process(reset,clk,op)
 begin
 	if(reset = '1') then
 		nxt_stage <= fetch;	
@@ -49,36 +49,58 @@ begin
 			case(op)is		  
 				-- Execute Load Word
 				when "100011" =>
-				controlSignals <= "000010000100000";	 
+				controlSignals <= "000010000100000";	
+				stage <= nxt_stage;
+				nxt_stage <= memory;	
+				-- Excute Store Word
+				when "101011" =>
+				controlSignals <= "000010000100000";	
+				stage <= nxt_stage;
+				nxt_stage <= memory;
 				-- Execute R-Type
 				when "000000" =>
-				controlSignals <= "000010000000010";
+				controlSignals <= "000010000000010"; 
+				stage <= nxt_stage;
+				nxt_stage <= writeBack;
 				-- Execute BEQ
 				when "000100" =>
 				controlSignals <= "000011000000101";
+				stage <= nxt_stage;
+				nxt_stage <= fetch;
 				-- Addi Execute
 				when "001000" =>
-				controlSignals <= "000010000100000";
+				controlSignals <= "000010000100000";  
+				stage <= nxt_stage;
+				nxt_stage <= writeBack;
+				-- J Execute
+				when "000010" =>
+				controlSignals <= "100000000001000";  
+				stage <= nxt_stage;
+				nxt_stage <= fetch;
 				when others =>
-				controlSignals <= "000000000000000";
-			end case;		
-			stage <= nxt_stage;
-			nxt_stage <= memory;
+				controlSignals <= "000000000000000";	  
+				stage <= nxt_stage;
+				nxt_stage <= memory;
+			end case;					
 			
 			-- Memory Stage
 			when memory =>
 			case(op) is
 				--Load Word Memory
 				when "100011" =>
-				controlSignals <= "000000100000000";
+				controlSignals <= "000000100000000"; 
+				stage <= nxt_stage;
+				nxt_stage <= writeBack;
 				--Store Word Memory
 				when "101011" => 
 				controlSignals <= "010000100000000";	
+				stage <= nxt_stage;
+				nxt_stage <= fetch;
 				when others =>
-				controlSignals <= "000000000000000";
-			end case;
-			stage <= nxt_stage;
-			nxt_stage <= writeBack;
+				controlSignals <= "000000000000000"; 
+				stage <= nxt_stage;
+				nxt_stage <= writeBack;
+			end case;				   
 			
 			-- WriteBack Stage
 			when writeBack =>
@@ -86,20 +108,23 @@ begin
 				--Load Word Write Back
 				when "100011" => 
 				controlSignals <= "000100010000000";
-				
+				stage <= nxt_stage;
+				nxt_stage <= fetch;	
 				--RType Write Back
 				when "000000" =>
 				controlSignals <= "000100001000000";
-				
+				stage <= nxt_stage;
+			    nxt_stage <= fetch;
 				--Addi Write Back
 				when "001000"	=>
 				controlSignals <= "000100000000000"; 
+				stage <= nxt_stage;
+				nxt_stage <= fetch;
 				when others =>
 				controlSignals <= "000000000000000";
+				stage <= nxt_stage;
+				nxt_stage <= fetch;
 			end case;		  
-			stage <= nxt_stage;
-			nxt_stage <= fetch;
-			
 			when others =>
 				controlSignals <= "000000000000000";
 		end case;

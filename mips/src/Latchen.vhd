@@ -15,7 +15,7 @@ end;
 architecture async of latch is
 begin
 process(clk, reset) begin
-	 q <= CONV_STD_LOGIC_VECTOR(0, width) when reset = '1'
+	 q <= CONV_STD_LOGIC_VECTOR(0, width) when reset = '1';
 	else d when (rising_edge(clk) and en ='1')  ;
 
 end if;

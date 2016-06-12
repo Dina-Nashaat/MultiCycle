@@ -5,16 +5,7 @@ use IEEE.STD_LOGIC_UNSIGNED.all;
 entity TopFrame is
 	port(
 	--Input Signals
-	clk, reset, zero: in STD_logic;
-	Op, Funct: in STD_logic_vector (5 downto 0);
-	--Register Enable Signals
-	MemWrite, IRWrite, RegWrite, PCEn: buffer STD_logic;
-	--MUX Select Signals
-	RegDst, MemtoReg, IorD, ALUSrcA: buffer STD_logic;
-	ALUSrcB: buffer STD_logic_vector (1 downto 0);
-	PCSrc: buffer STD_logic_vector (1 downto 0);	 
-	--ALUControl Output Signal
-	ALUControl: buffer STD_logic_vector (2 downto 0)
+	clk, reset: in STD_logic
 	);
 end;
 
@@ -37,6 +28,25 @@ component Controller
 	);
 end component;
 
+component DataPath
+	port(
+	clk, reset: in STD_logic;
+	-- Inputs from Controller
+	PCEn, IorD, IRWrite: in STD_logic;
+	RegDst, MemtoReg: in STD_logic;
+	RegWrite, ALUSrcA: in STD_logic;
+	ALUSrcB, PCSrc: in STD_logic_vector (1 downto 0);
+	ALUControl: in STD_logic_vector (2 downto 0);
+	-- Inputs from Memory
+	RD: in STD_logic_vector (31 downto 0);
+	-- Outputs to Controller
+	zero: out STD_logic;
+	Op, Funct: out STD_logic_vector (5 downto 0);
+	-- Outputs to Memory
+	Adr, WD: out STD_logic_vector (31 downto 0) 
+	);	
+end component;
+
 component Memory
 	port(
 	A, WD: in STD_logic_vector (31 downto 0);
@@ -44,9 +54,27 @@ component Memory
 	RD: out STD_logic_vector (31 downto 0)
 	);
 end component;
-	
+
+signal zero: STD_logic;
+signal Op, Funct: STD_logic_vector (5 downto 0);
+--Register Enable Signals
+signal MemWrite, IRWrite, RegWrite, PCEn: STD_logic;
+--MUX Select Signals
+signal RegDst, MemtoReg, IorD, ALUSrcA: STD_logic;
+signal ALUSrcB: STD_logic_vector (1 downto 0);
+signal PCSrc: STD_logic_vector (1 downto 0);	 
+--ALUControl Output Signal
+signal ALUControl: STD_logic_vector (2 downto 0);
+-- Memory Signals
+signal RD, WD, Adr: STD_logic_vector (31 downto 0);
+
+
 begin
 	Controller1: Controller port map (clk, reset, Op, Funct, zero, MemWrite, IRWrite, RegWrite, PCEn,
 										RegDst, MemtoReg, IorD, ALUSrcA, ALUSrcB, PCSrc, ALUControl);
-	--Mem: Memory port map () -- Datapath needed
+	
+	Dp: DataPath port map (clk, reset, PCEn, IorD, IRWrite, RegDst, MemtoReg, RegWrite, ALUSrcA, ALUSrcB, PCSrc, ALUControl,
+							RD, zero, Op, Funct, Adr, WD);
+	
+	Mem: Memory port map (Adr, WD, clk, MemWrite, RD);
 end;																								 

@@ -9,16 +9,7 @@ architecture Test of TestBench is
 component TopFrame
 	port(
 	--Input Signals
-	clk, reset, zero: in STD_logic;
-	Op, Funct: in STD_logic_vector (5 downto 0);
-	--Register Enable Signals
-	MemWrite, IRWrite, RegWrite, PCEn: buffer STD_logic;
-	--MUX Select Signals
-	RegDst, MemtoReg, IorD, ALUSrcA: buffer STD_logic;
-	ALUSrcB: buffer STD_logic_vector (1 downto 0);
-	PCSrc: buffer STD_logic_vector (1 downto 0);	 
-	--ALUControl Output Signal
-	ALUControl: buffer STD_logic_vector (2 downto 0)
+	clk, reset: in STD_logic
 	);
 end component; 
 
@@ -31,8 +22,7 @@ signal PCSrc: STD_logic_vector (1 downto 0);
 signal ALUControl: STD_logic_vector (2 downto 0);
 
 begin
-	Top: TopFrame port map (clk, reset, zero, Op, Funct, MemWrite, IRWrite, RegWrite, PCEn, RegDst, MemtoReg, IorD, ALUSrcA,
-								ALUSrcB, PCSrc, ALUControl);
+	Top: TopFrame port map (clk, reset);
 	
 	process begin
 		clk <= '1';

@@ -2,11 +2,11 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.all; 
 use IEEE.STD_LOGIC_UNSIGNED.all;
 
-entity Controller_TB is
+entity TestBench is
 end;
 
-architecture Test of Controller_TB is
-component C_TopFrame
+architecture Test of TestBench is
+component TopFrame
 	port(
 	--Input Signals
 	clk, reset, zero: in STD_logic;
@@ -31,7 +31,7 @@ signal PCSrc: STD_logic_vector (1 downto 0);
 signal ALUControl: STD_logic_vector (2 downto 0);
 
 begin
-	C_TB: C_TopFrame port map (clk, reset, zero, Op, Funct, MemWrite, IRWrite, RegWrite, PCEn, RegDst, MemtoReg, IorD, ALUSrcA,
+	Top: TopFrame port map (clk, reset, zero, Op, Funct, MemWrite, IRWrite, RegWrite, PCEn, RegDst, MemtoReg, IorD, ALUSrcA,
 								ALUSrcB, PCSrc, ALUControl);
 	
 	process begin

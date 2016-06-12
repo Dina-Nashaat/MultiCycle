@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.all; 
 use IEEE.STD_LOGIC_UNSIGNED.all;
 
-entity C_TopFrame is
+entity TopFrame is
 	port(
 	--Input Signals
 	clk, reset, zero: in STD_logic;
@@ -18,7 +18,7 @@ entity C_TopFrame is
 	);
 end;
 
-Architecture Test of C_TopFrame is
+Architecture Test of TopFrame is
 component Controller
 	port(
 	--clock and reset signals
@@ -37,7 +37,16 @@ component Controller
 	);
 end component;
 
+component Memory
+	port(
+	A, WD: in STD_logic_vector (31 downto 0);
+	clk, WE: in STD_logic;
+	RD: out STD_logic_vector (31 downto 0)
+	);
+end component;
+	
 begin
 	Controller1: Controller port map (clk, reset, Op, Funct, zero, MemWrite, IRWrite, RegWrite, PCEn,
 										RegDst, MemtoReg, IorD, ALUSrcA, ALUSrcB, PCSrc, ALUControl);
-end;
+	--Mem: Memory port map () -- Datapath needed
+end;																								 

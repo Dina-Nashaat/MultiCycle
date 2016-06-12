@@ -38,31 +38,49 @@ Active_lib=
 
 [HierarchyViewer]
 SortInfo=u
-HierarchyInformation=controller_tb|Test|0 
+HierarchyInformation=testbench|Test|0
 ShowHide=ShowTopLevel
 Selected=
 
 [Files]
-/MainDec.vhd=-1
+/wave.asdb=-1
+/ALU.vhd=-1
 /aludec.vhd=-1
 /Controller.vhd=-1
-/TopFrame.vhd=-1
-/Shifter.vhd=-1
-/TestBench.vhd=-1
+/DataPath.vhd=-1
+/Latch.vhd=-1
+/Latchen.vhd=-1
 /LW-Simulation.asdb=-1
 /LW-Simulation.awc=-1
+/MainDec.vhd=-1
 /Memory.vhd=-1
-/DataPath.vhd=-1
+/Mux2.vhd=-1
+/Mux4.vhd=-1
+/RegFile.vhd=-1
+/Shifter26.vhd=-1
+/Shifter32.vhd=-1
+/Signext.vhd=-1
+/TestBench.vhd=-1
+/TopFrame.vhd=-1
 
 [Files.Data]
-.\src\MainDec.vhd=VHDL Source Code
+.\src\wave.asdb=Accelerated Waveform File
+.\src\ALU.vhd=VHDL Source Code
 .\src\aludec.vhd=VHDL Source Code
 .\src\Controller.vhd=VHDL Source Code
-.\src\TopFrame.vhd=VHDL Source Code
-.\src\Shifter.vhd=VHDL Source Code
-.\src\TestBench.vhd=VHDL Source Code
+.\src\DataPath.vhd=VHDL Source Code
+.\src\Latch.vhd=VHDL Source Code
+.\src\Latchen.vhd=VHDL Source Code
 .\src\LW-Simulation.asdb=Accelerated Waveform File
 .\src\LW-Simulation.awc=Accelerated Waveform Configuration
+.\src\MainDec.vhd=VHDL Source Code
 .\src\Memory.vhd=VHDL Source Code
-.\src\DataPath.vhd=VHDL Source Code
+.\src\Mux2.vhd=VHDL Source Code
+.\src\Mux4.vhd=VHDL Source Code
+.\src\RegFile.vhd=VHDL Source Code
+.\src\Shifter26.vhd=VHDL Source Code
+.\src\Shifter32.vhd=VHDL Source Code
+.\src\Signext.vhd=VHDL Source Code
+.\src\TestBench.vhd=VHDL Source Code
+.\src\TopFrame.vhd=VHDL Source Code
 

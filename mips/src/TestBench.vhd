@@ -9,20 +9,17 @@ architecture Test of TestBench is
 component TopFrame
 	port(
 	--Input Signals
-	clk, reset: in STD_logic
+	clk, reset: in STD_logic;
+	MemWrite: buffer STD_logic;
+	Adr, WD: buffer STD_logic_vector(31 downto 0)
 	);
 end component; 
 
-signal clk, reset, zero: STD_logic;
-signal Op, Funct: STD_logic_vector (5 downto 0);
-signal MemWrite, IRWrite, RegWrite, PCEn: STD_logic;
-signal RegDst, MemtoReg, IorD, ALUSrcA: STD_logic;
-signal ALUSrcB: STD_logic_vector (1 downto 0);
-signal PCSrc: STD_logic_vector (1 downto 0);
-signal ALUControl: STD_logic_vector (2 downto 0);
+signal clk, reset, MemWrite: STD_logic;
+signal DataAdr, WriteData: STD_logic_vector(31 downto 0);
 
 begin
-	Top: TopFrame port map (clk, reset);
+	Top: TopFrame port map (clk, reset, MemWrite, DataAdr, WriteData);
 	
 	process begin
 		clk <= '1';
@@ -38,24 +35,13 @@ begin
 		wait;
 	end process;
 	
-	--Dummy Processes
-	process begin
-		zero <= '1';
-		wait for 100 ns;
-		zero <= '0';
-		wait for 100 ns;
-	end process;
-	
-	process begin
-		--Load Word Instruction
-		Op <= "100011";
-		wait;
-	end process;
-	
-	process begin
-		--Add Function
-		Funct <= "100000";
-		wait;
+	--Driving process
+	process (clk) begin
+		if (clk'event and clk = '0' and MemWrite = '1') then
+		if (conv_integer(DataAdr) = 84 and conv_integer(WriteData) = 7) then report "Simulation succeeded";
+		elsif (DataAdr /= 80) then report "Simulation failed";
+		end if;
+		end if;
 	end process;
 	
 end;	

@@ -10,7 +10,7 @@ entity Memory is
 	);
 end;
 
-architecture behave of Memory is
+architecture struct of Memory is
 type RAM is array (63 downto 0) of STD_logic_vector (31 downto 0);
 signal MemD: RAM;
 

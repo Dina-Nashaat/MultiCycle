@@ -5,7 +5,9 @@ use IEEE.STD_LOGIC_UNSIGNED.all;
 entity TopFrame is
 	port(
 	--Input Signals
-	clk, reset: in STD_logic
+	clk, reset: in STD_logic;
+	MemWrite: buffer STD_logic;
+	Adr, WD: buffer STD_logic_vector(31 downto 0)
 	);
 end;
 
@@ -58,7 +60,7 @@ end component;
 signal zero: STD_logic;
 signal Op, Funct: STD_logic_vector (5 downto 0);
 --Register Enable Signals
-signal MemWrite, IRWrite, RegWrite, PCEn: STD_logic;
+signal IRWrite, RegWrite, PCEn: STD_logic;
 --MUX Select Signals
 signal RegDst, MemtoReg, IorD, ALUSrcA: STD_logic;
 signal ALUSrcB: STD_logic_vector (1 downto 0);
@@ -66,7 +68,7 @@ signal PCSrc: STD_logic_vector (1 downto 0);
 --ALUControl Output Signal
 signal ALUControl: STD_logic_vector (2 downto 0);
 -- Memory Signals
-signal RD, WD, Adr: STD_logic_vector (31 downto 0);
+signal RD: STD_logic_vector (31 downto 0);
 
 
 begin

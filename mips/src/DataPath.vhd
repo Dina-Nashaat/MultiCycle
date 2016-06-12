@@ -4,7 +4,7 @@ use IEEE.STD_LOGIC_UNSIGNED.all; use IEEE.STD_LOGIC_ARITH.all;
 
 entity DataPath is
 	port(
-	clk: in STD_logic;
+	clk, reset: in STD_logic;
 	-- Inputs from Controller
 	PCEn, IorD, IRWrite: in STD_logic;
 	RegDst, MemtoReg: in STD_logic;
@@ -49,11 +49,17 @@ component Signext
 	);
 end component;
 
-component Shifter 
-	generic (Width : Integer := 32);
+component Shifter26 
 	port(
-	inp: in STD_LOGIC_VECTOR(Width-1 downto 0);
-	outp: out STD_LOGIC_VECTOR (Width-1 downto 0)
+	inp: in STD_LOGIC_VECTOR(25 downto 0);
+	outp: out STD_LOGIC_VECTOR (27 downto 0)
+	);
+end component;
+
+component Shifter32 
+	port(
+	inp: in STD_LOGIC_VECTOR(31 downto 0);
+	outp: out STD_LOGIC_VECTOR (31 downto 0)
 	);
 end component;
 
@@ -88,12 +94,47 @@ end component;
 signal instr: std_logic_vector (31 downto 0);
 signal data : std_logic_vector (31 downto 0);
 
-signal ImmExt: std_logic_vector (31 downto 0);			  
+signal ImmExt, ImmExtSl2: std_logic_vector (31 downto 0);			  
 
 signal SrcA, SrcB, ALUResult, ALUOut : std_logic_vector  (31 downto 0);
 
+
+signal writeReg: std_logic_vector (4 downto 0);
+signal regInput: std_logic_vector (31 downto 0);   
+signal RD1, RD2: std_logic_vector (31 downto 0); --Register Output before latch
+signal rdA, rdB: std_logic_vector (31 downto 0); --Register Output after latch
+
 signal PCJump, PCNext, PC: std_logic_vector (31 downto 0);
+signal jumpShift: std_logic_vector (27 downto 0);
 
 begin
+		
+	--PC Increment and Select Logic
+	PCLatch		: Latch generic map (32) port map (clk, reset, PCEn, PCNext, PC);
+	PCMux  		: Mux2 generic map (32) port map (IorD, PC, ALUOut, Adr);
+	signEx      : Signext port map (Instr(15 downto 0), ImmExt);
+	shft32      : Shifter32 port map (ImmExt, ImmExtSl2);				   
+	shft26      : Shifter26 port map (Instr(25 downto 0), jumpShift);
+	PCJump      <= PC(31 downto 28) & jumpShift;
 	
+	--Memory Select Logic
+	InstrLatch	: Latch generic map (32) port map (clk, reset, IRWrite, RD, instr);
+	DataLatch 	: Latch generic map (32) port map  (clk, reset, '1', RD, data);
+	
+	--Register File Logic 
+	rF          : RegFile port map (clk, RegWrite,
+									instr(25 downto 21), instr(20 downto 16),
+									writeReg,regInput,
+									RD1, RD2);
+	writeRegMux : Mux2 generic map (5) port map (RegDst, instr(20 downto 16),instr(15 downto 11), writeReg);
+	regInputMux : Mux2 generic map (32) port map (MemtoReg, ALUOut, data, regInput);
+	srcALatch   : Latch generic map (32) port map (clk, reset, '1', RD1, rdA);
+	srcBLatch   : Latch generic map (32) port map (clk, reset, '1', RD2, rdB);
+	
+	
+	--ALU Logic
+	srcAMux    : Mux2 generic map(32) port map (ALUSrcA, PC, rdA, SrcA);
+	srcBMux    : Mux4 generic map(32) port map (ALUSrcB, rdB, X"00000004",ImmExt, ImmExtSl2, SrcB);
+	ALUComp    : ALU port map (SrcA, SrcB, ALUControl,zero, ALUResult);
+	ALUOutMux  : Mux4 generic map (32) port map (PCSrc, ALUResult, ALUOut,PCJump, x"00000000",PCNext);
 end;

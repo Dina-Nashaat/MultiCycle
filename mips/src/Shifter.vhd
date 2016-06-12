@@ -3,10 +3,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 
 
-entity shifter is
+entity shifter is	 
+	generic (Width : Integer := 32);
 Port(
-in32: in STD_LOGIC(31 downto 0);
-out32: out STD_LOGIC (31 downto 0);
+inp: in STD_LOGIC_VECTOR(Width-1 downto 0);
+outp: out STD_LOGIC_VECTOR (Width-1 downto 0)
 
 );
 end shifter;
@@ -14,8 +15,6 @@ end shifter;
 architecture Behavioral of shifter is
 
 begin
-out32 <= in32(29 downto 0) & "00";
+outp <= inp(Width-3 downto 0) & "00";
 
 end Behavioral;
-
-

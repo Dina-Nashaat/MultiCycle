@@ -9,7 +9,7 @@ entity Controller is -- MultiCycle Controller
 	op, funct: in STD_logic_vector (5 downto 0);
 	zero: in STD_logic;
 	--Register Enable Signals
-	MemWrite, IRWrite, RegWrite, PCEn: out STd_logic;
+	MemWrite, IRWrite, RegWrite, PCEn: out STD_logic;
 	--MUX Select Signals
 	RegDst, MemtoReg, IorD, ALUSrcA: out STD_logic;
 	ALUSrcB: out STD_logic_vector (1 downto 0);

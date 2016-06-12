@@ -1,2 +1,3 @@
 i<>.\src\TestBench.vhd
 i<>.\src\C_TopFrame.vhd
+i<>.\src\DataPath.vhd

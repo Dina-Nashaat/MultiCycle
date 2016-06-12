@@ -52,6 +52,7 @@ Selected=
 /LW-Simulation.asdb=-1
 /LW-Simulation.awc=-1
 /Memory.vhd=-1
+/DataPath.vhd=-1
 
 [Files.Data]
 .\src\MainDec.vhd=VHDL Source Code
@@ -63,4 +64,5 @@ Selected=
 .\src\LW-Simulation.asdb=Accelerated Waveform File
 .\src\LW-Simulation.awc=Accelerated Waveform Configuration
 .\src\Memory.vhd=VHDL Source Code
+.\src\DataPath.vhd=VHDL Source Code
 

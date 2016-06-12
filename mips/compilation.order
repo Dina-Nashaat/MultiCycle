@@ -5,3 +5,4 @@
 .\src\Shifter.vhd
 .\src\TestBench.vhd
 .\src\Memory.vhd
+.\src\DataPath.vhd

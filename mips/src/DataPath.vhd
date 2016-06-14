@@ -135,6 +135,6 @@ begin
 	--ALU Logic
 	srcAMux    : Mux2 generic map(32) port map (ALUSrcA, PC, rdA, SrcA);
 	srcBMux    : Mux4 generic map(32) port map (ALUSrcB, rdB, X"00000004",ImmExt, ImmExtSl2, SrcB);
-	ALUComp    : ALU port map (SrcA, SrcB, ALUControl,zero, ALUResult);
+	ALUComp    : ALU port map (SrcA, SrcB, ALUControl, zero, ALUResult);
 	ALUOutMux  : Mux4 generic map (32) port map (PCSrc, ALUResult, ALUOut,PCJump, x"00000000",PCNext);
 end;

@@ -43,6 +43,8 @@ begin
 			Mem(index) := CONV_STD_LOGIC_VECTOR (result, 32);
 			index := index + 1;
 		end loop;
+		FILE_CLOSE(Mem_File);
+		MemD <= Mem;
 		
 		if clk'event and clk = '1' then
 			if(WE = '1') then

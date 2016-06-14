@@ -7,7 +7,7 @@
 .\src\Mux2.vhd
 .\src\MainDec.vhd
 .\src\Latch.vhd
-.\src\aludec.vhd
+.\src\ALUDec.vhd
 .\src\ALU.vhd
 .\src\Controller.vhd
 .\src\DataPath.vhd

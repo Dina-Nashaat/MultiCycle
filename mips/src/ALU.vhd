@@ -16,12 +16,9 @@ AluOut: out STD_LOGIC_VECTOR (31 downto 0));
 end ALU;
 
 architecture Behavioral of ALU is					
-signal X : integer  ; -- Integer Value of A
-signal Y : integer ;	  -- Integer Value of B
 signal Result : STD_LOGIC_VECTOR(31 downto 0);	
 		
 begin	
-	 
 	
 	Result <= A and B when C = "000" else
 	A or B when C	 = "001" else 
@@ -32,15 +29,10 @@ begin
 	CONV_STD_LOGIC_VECTOR(1, 32) when A < B and C = "111" else
 	CONV_STD_LOGIC_VECTOR(0, 32) when A >= B and C = "111" ;
 
-		
- 
-
-
 	
-Z <= '1' when  Result = 0 else
-					'0' ;	 
+Z <= '1' when  Result = 0 else '0' ;	 
 			 
-		   AluOut<=Result;
+AluOut<=Result;
 						
 end Behavioral;
 

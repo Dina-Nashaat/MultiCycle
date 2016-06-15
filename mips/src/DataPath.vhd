@@ -68,8 +68,8 @@ component Latch
 	port(
 	clk, reset: in STD_LOGIC;
 	en: in STD_LOGIC;
-	d: in STD_LOGIC_VECTOR(width-1 downto 0);
-	q: out STD_LOGIC_VECTOR(width-1 downto 0));
+	input: in STD_LOGIC_VECTOR(width-1 downto 0);
+	output: out STD_LOGIC_VECTOR(width-1 downto 0));
 end component;
 
 component Mux2
@@ -120,13 +120,15 @@ begin
 	--Memory Select Logic
 	InstrLatch	: Latch generic map (32) port map (clk, reset, IRWrite, RD, instr);
 	DataLatch 	: Latch generic map (32) port map  (clk, reset, '1', RD, data);
+	Op <= instr(31 downto 26);
+	Funct <= instr(5 downto 0);
 	
 	--Register File Logic 
 	rF          : RegFile port map (clk, RegWrite,
 									instr(25 downto 21), instr(20 downto 16),
 									writeReg,regInput,
 									RD1, RD2);
-	writeRegMux : Mux2 generic map (5) port map (RegDst, instr(20 downto 16),instr(15 downto 11), writeReg);
+	writeRegMux : Mux2 generic map (5) port map (RegDst, instr(20 downto 16), instr(15 downto 11), writeReg);
 	regInputMux : Mux2 generic map (32) port map (MemtoReg, ALUOut, data, regInput);
 	srcALatch   : Latch generic map (32) port map (clk, reset, '1', RD1, rdA);
 	srcBLatch   : Latch generic map (32) port map (clk, reset, '1', RD2, rdB);
@@ -136,5 +138,6 @@ begin
 	srcAMux    : Mux2 generic map(32) port map (ALUSrcA, PC, rdA, SrcA);
 	srcBMux    : Mux4 generic map(32) port map (ALUSrcB, rdB, X"00000004",ImmExt, ImmExtSl2, SrcB);
 	ALUComp    : ALU port map (SrcA, SrcB, ALUControl, zero, ALUResult);
-	ALUOutMux  : Mux4 generic map (32) port map (PCSrc, ALUResult, ALUOut,PCJump, x"00000000",PCNext);
+	ALUOutMux  : Mux4 generic map (32) port map (PCSrc, ALUResult, ALUOut, PCJump, x"00000000",PCNext);
+	ALULatch   : Latch generic map (32) port map (clk, reset, '1', ALUResult, ALUOut);
 end;

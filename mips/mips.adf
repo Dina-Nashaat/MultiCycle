@@ -62,6 +62,8 @@ Selected=
 /wave.asdb=-1
 /LW-Simulation.asdb=-1
 /LW-Simulation.awc=-1
+/Run1.asdb=-1
+/Run1.awc=-1
 
 [Files.Data]
 .\src\Memory.vhd=VHDL Source Code
@@ -83,4 +85,6 @@ Selected=
 .\src\wave.asdb=Accelerated Waveform File
 .\src\LW-Simulation.asdb=Accelerated Waveform File
 .\src\LW-Simulation.awc=Accelerated Waveform Configuration
+.\src\Run1.asdb=Accelerated Waveform File
+.\src\Run1.awc=Accelerated Waveform Configuration
 

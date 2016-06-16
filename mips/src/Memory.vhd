@@ -11,7 +11,7 @@ entity Memory is
 end;
 
 architecture struct of Memory is
-type RAM is array (63 downto 0) of STD_logic_vector (31 downto 0);
+type RAM is array (127 downto 0) of STD_logic_vector (31 downto 0);
 signal MemD: RAM;
 
 begin
@@ -22,7 +22,7 @@ begin
 	variable index, result: Integer;
 	variable Mem: RAM;
 	begin
-		for i in 0 to 63 loop
+		for i in 0 to 127 loop
 			Mem(conv_integer(i)) := CONV_STD_LOGIC_VECTOR (0, 32);
 		end loop;
 		index := 0;

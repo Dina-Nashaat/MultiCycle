@@ -38,7 +38,7 @@ Active_lib=
 
 [HierarchyViewer]
 SortInfo=u
-HierarchyInformation=controller|struct|0 shifter|Behavioral|0 testbench|Test|0
+HierarchyInformation=testbench|Test|0 
 ShowHide=ShowTopLevel
 Selected=
 
@@ -64,6 +64,8 @@ Selected=
 /LW-Simulation.awc=-1
 /Run1.asdb=-1
 /Run1.awc=-1
+/SemiFinalRun.asdb=-1
+/SemiFinalRun.awc=-1
 
 [Files.Data]
 .\src\Memory.vhd=VHDL Source Code
@@ -87,4 +89,6 @@ Selected=
 .\src\LW-Simulation.awc=Accelerated Waveform Configuration
 .\src\Run1.asdb=Accelerated Waveform File
 .\src\Run1.awc=Accelerated Waveform Configuration
+.\src\SemiFinalRun.asdb=Accelerated Waveform File
+.\src\SemiFinalRun.awc=Accelerated Waveform Configuration
 

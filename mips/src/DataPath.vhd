@@ -132,6 +132,7 @@ begin
 	regInputMux : Mux2 generic map (32) port map (MemtoReg, ALUOut, data, regInput);
 	srcALatch   : Latch generic map (32) port map (clk, reset, '1', RD1, rdA);
 	srcBLatch   : Latch generic map (32) port map (clk, reset, '1', RD2, rdB);
+	WD <= rdB;
 	
 	
 	--ALU Logic

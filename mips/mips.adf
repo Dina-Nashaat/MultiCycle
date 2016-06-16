@@ -66,6 +66,10 @@ Selected=
 /Run1.awc=-1
 /SemiFinalRun.asdb=-1
 /SemiFinalRun.awc=-1
+/Report.asdb=-1
+/Report.awc=-1
+/Final Simulation Run.asdb=-1
+/Final Simulation Run.awc=-1
 
 [Files.Data]
 .\src\Memory.vhd=VHDL Source Code
@@ -91,4 +95,8 @@ Selected=
 .\src\Run1.awc=Accelerated Waveform Configuration
 .\src\SemiFinalRun.asdb=Accelerated Waveform File
 .\src\SemiFinalRun.awc=Accelerated Waveform Configuration
+.\src\Report.asdb=Accelerated Waveform File
+.\src\Report.awc=Accelerated Waveform Configuration
+.\src\Final Simulation Run.asdb=Accelerated Waveform File
+.\src\Final Simulation Run.awc=Accelerated Waveform Configuration
 

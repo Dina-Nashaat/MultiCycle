@@ -1,0 +1,3 @@
+- Documentation contains report, simulation table and simulation waveform
+- mips/src - contains all vhdl files used
+- Project can be found on github: https://github.com/Dina-Nashaat/Multicycle-MIPS-Processor
